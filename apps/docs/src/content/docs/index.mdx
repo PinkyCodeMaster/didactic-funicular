@@ -1,36 +1,140 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Welcome to Oakford
+description: Complete platform solution with web, mobile, and admin applications built for modern businesses.
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  title: 'Oakford Platform'
+  tagline: A comprehensive monorepo solution with web, mobile, and admin applications built for modern businesses
   image:
     file: ../../assets/houston.webp
+    alt: 'Oakford Platform Logo'
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /getting-started/introduction/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+      variant: primary
+    - text: View Architecture
+      link: /getting-started/architecture/
+      icon: document
+      variant: secondary
+    - text: API Reference
+      link: /technical/api-reference/
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard, Badge, Icon } from '@astrojs/starlight/components';
 
-## Next steps
+## Platform Overview
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Web Application" icon="laptop">
+		**Next.js 15** customer-facing application with authentication, responsive design, and modern UI components.
+		
+		- Server-side rendering
+		- Authentication pages
+		- Responsive design
+		- Better Auth integration
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Admin Panel" icon="setting">
+		**React Router 7** admin interface for managing users, content, and system settings.
+		
+		- Modern routing
+		- shadcn/ui components
+		- Dashboard interface
+		- Role-based access
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="Mobile App" icon="mobile">
+		**Expo React Native** application for iOS and Android platforms.
+		
+		- Cross-platform support
+		- Native performance
+		- Shared authentication
+		- Offline capabilities
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Backend API" icon="rocket">
+		**Hono.js** API server with Better Auth integration and PostgreSQL database.
+		
+		- High performance
+		- Type-safe endpoints
+		- Database integration
+		- CORS configuration
 	</Card>
 </CardGrid>
+
+## Quick Start
+
+Get the entire platform running locally in minutes:
+
+```bash
+# Clone and install
+git clone <repository-url>
+cd oakford
+pnpm install
+
+# Set up environment
+cp .env.example .env
+# Edit .env with your configuration
+
+# Build packages and start
+pnpm build:packages
+pnpm dev
+```
+
+This starts all applications:
+- **Web App**: http://localhost:3000
+- **Admin Panel**: http://localhost:5173
+- **Backend API**: http://localhost:9000
+
+## Technology Stack
+
+<CardGrid>
+	<Card title="Frontend Technologies" icon="puzzle">
+		- **Next.js 15** - React framework with App Router
+		- **React Router 7** - Modern client-side routing
+		- **Expo** - React Native for mobile
+		- **Tailwind CSS** - Utility-first styling
+		- **shadcn/ui** - Component library
+	</Card>
+	<Card title="Backend Technologies" icon="server">
+		- **Hono.js** - Fast web framework
+		- **Better Auth** - Modern authentication
+		- **Drizzle ORM** - Type-safe database queries
+		- **PostgreSQL** - Robust database
+		- **TypeScript** - End-to-end type safety
+	</Card>
+</CardGrid>
+
+## Documentation Sections
+
+<CardGrid>
+	<LinkCard
+		title="User Guide"
+		description="Learn how to use the web and mobile applications"
+		href="/user-guide/web-app/"
+	/>
+	<LinkCard
+		title="Admin Guide"
+		description="Comprehensive admin panel documentation"
+		href="/admin-guide/admin-panel/"
+	/>
+	<LinkCard
+		title="API Reference"
+		description="Complete API documentation with examples"
+		href="/technical/api-reference/"
+	/>
+	<LinkCard
+		title="Development Guide"
+		description="Technical documentation for developers"
+		href="/technical/development/"
+	/>
+</CardGrid>
+
+## Key Features
+
+- <Icon name="approve-check" color="green" /> **Full-stack TypeScript** - End-to-end type safety
+- <Icon name="rocket" color="blue" /> **Modern Architecture** - Monorepo with shared packages
+- <Icon name="shield" color="orange" /> **Secure Authentication** - Better Auth integration
+- <Icon name="mobile" color="purple" /> **Multi-platform** - Web, mobile, and admin apps
+- <Icon name="setting" color="gray" /> **Developer Experience** - Hot reload and modern tooling
+- <Icon name="document" color="green" /> **Comprehensive Docs** - Complete documentation coverage

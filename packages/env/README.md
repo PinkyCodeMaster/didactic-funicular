@@ -15,10 +15,13 @@ console.log(env.DATABASE_URL); // your database URL
 ## Environment Variables
 
 - `NODE_ENV`: Environment mode (default: 'development')
-- `PORT`: Server port (default: 9999)
+- `PORT`: Server port (default: 9000)
 - `LOG_LEVEL`: Logging level ('fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace' | 'silent')
 - `DATABASE_URL`: Database connection URL (required)
 - `DATABASE_AUTH_TOKEN`: Database auth token (required in production)
+- `BETTER_AUTH_SECRET`: Secret key for Better Auth (required)
+- `BETTER_AUTH_URL`: Base URL for Better Auth (required)
+- `BACKEND_URL`: Backend server URL (default: 'http://localhost:9000')
 
 ## Development
 

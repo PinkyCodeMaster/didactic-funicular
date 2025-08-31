@@ -36,6 +36,9 @@ const EnvSchema = z.object({
     LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace", "silent"]),
     DATABASE_URL: z.string().url(),
     DATABASE_AUTH_TOKEN: z.string().optional(),
+    BETTER_AUTH_SECRET: z.string(),
+    BETTER_AUTH_URL: z.string().url(),
+    BACKEND_URL: z.string().url().default("http://localhost:9000"),
 });
 
 export type env = z.infer<typeof EnvSchema>;
