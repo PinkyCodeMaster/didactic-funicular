@@ -61,14 +61,14 @@ NEXT_PUBLIC_BACKEND_URL=http://localhost:9000
 
 ### 4. Database Setup
 
-Build the database package and run migrations:
+Set up the database schema:
 
 ```bash
-# Build the database package
-pnpm --filter @repo/db build
+# Push database schema to your PostgreSQL database
+DATABASE_URL="your-database-url" pnpm --filter packages-db db:push
 
-# Run database migrations
-pnpm --filter @repo/db db:push
+# Or if you have DATABASE_URL in your .env file:
+pnpm --filter packages-db db:push
 ```
 
 ### 5. Build Shared Packages
@@ -79,8 +79,8 @@ Build the shared packages that other applications depend on:
 # Build environment configuration
 pnpm --filter @repo/env build
 
-# Build UI components (if applicable)
-pnpm --filter @repo/ui build
+# Build database package
+pnpm --filter packages-db build
 ```
 
 ## Running the Platform

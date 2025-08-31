@@ -39,6 +39,7 @@ const EnvSchema = z.object({
     BETTER_AUTH_SECRET: z.string(),
     BETTER_AUTH_URL: z.string().url(),
     BACKEND_URL: z.string().url().default("http://localhost:9000"),
+    RESEND_API_KEY: z.string(),
 });
 
 export type env = z.infer<typeof EnvSchema>;

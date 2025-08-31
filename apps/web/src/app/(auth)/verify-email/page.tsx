@@ -36,7 +36,7 @@ function VerifyEmailContent() {
       } else {
         setSuccess(true);
         setTimeout(() => {
-          router.push("/");
+          router.push("/account");
         }, 2000);
       }
     } catch (err) {

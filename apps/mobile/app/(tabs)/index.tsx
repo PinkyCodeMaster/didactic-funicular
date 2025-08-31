@@ -1,13 +1,27 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
+import { useAuth } from '@/lib/auth-context';
 
 export default function HomeScreen() {
+  const { user, signOut } = useAuth();
+
+  const handleSignOut = () => {
+    Alert.alert(
+      'Sign Out',
+      'Are you sure you want to sign out?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Sign Out', style: 'destructive', onPress: signOut },
+      ]
+    );
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -18,9 +32,20 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Welcome, {user?.name}!</ThemedText>
         <HelloWave />
       </ThemedView>
+      
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Your Account</ThemedText>
+        <ThemedText>Email: {user?.email}</ThemedText>
+        <ThemedText>User ID: {user?.id}</ThemedText>
+        
+        <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
+          <ThemedText style={styles.signOutText}>Sign Out</ThemedText>
+        </TouchableOpacity>
+      </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
@@ -94,5 +119,16 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  signOutButton: {
+    backgroundColor: '#ef4444',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  signOutText: {
+    color: '#fff',
+    fontWeight: '600',
   },
 });

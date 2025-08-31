@@ -1,50 +1,179 @@
-# Welcome to your Expo app 👋
+# Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is an [Expo](https://expo.dev) project with Better Auth integration for authentication.
 
-## Get started
+## Features
 
-1. Install dependencies
+- 🔐 **Better Auth Integration**: Complete authentication flow with email/password
+- 📱 **Cross-platform**: Works on iOS, Android, and Web
+- 🔒 **Secure Storage**: Uses Expo SecureStore for token management
+- 🎨 **Modern UI**: Clean, responsive design with React Native
+- 🔄 **Auto-sync**: Automatic session management and refresh
 
+## Authentication Features
+
+- Sign in with email and password
+- User registration with email verification
+- Password reset functionality
+- Secure session management
+- Automatic token refresh
+- Deep linking support for auth flows
+
+## Get Started
+
+1. **Install dependencies**
    ```bash
-   npm install
+   pnpm install
    ```
 
-2. Start the app
+2. **Configure environment**
+   - Ensure your backend server is running on port 9000
+   - Update the IP address in `lib/config.ts` to match your machine's IP
+   - You can find your IP in the Expo terminal output (e.g., `192.168.0.28`)
 
+3. **Update IP address (if needed)**
    ```bash
-   npx expo start
+   pnpm update-ip
    ```
 
-In the output, you'll find options to open the app in a
+4. **Start the development server**
+   ```bash
+   pnpm dev
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+5. **Open the app**
+   - Scan the QR code with Expo Go (Android) or Camera app (iOS)
+   - Or press `w` to open in web browser
+   - Or press `a` for Android emulator / `i` for iOS simulator
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+apps/mobile/
+├── app/
+│   ├── (auth)/           # Authentication screens
+│   │   ├── sign-in.tsx   # Sign in screen
+│   │   ├── sign-up.tsx   # Registration screen
+│   │   └── forgot-password.tsx
+│   ├── (tabs)/           # Main app tabs
+│   │   ├── index.tsx     # Home screen
+│   │   ├── profile.tsx   # User profile
+│   │   └── explore.tsx   # Explore screen
+│   └── _layout.tsx       # Root layout with auth routing
+├── lib/
+│   ├── auth-client.ts    # Better Auth client configuration
+│   ├── auth-context.tsx  # Authentication context provider
+│   └── api.ts           # API utilities for authenticated requests
+└── metro.config.js      # Metro bundler configuration
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Authentication Flow
 
-## Learn more
+1. **Unauthenticated users** see the auth screens (`(auth)` group)
+2. **Authenticated users** see the main app (`(tabs)` group)
+3. **Session management** is handled automatically by Better Auth
+4. **Deep linking** works for password reset and social auth flows
 
-To learn more about developing your project with Expo, look at the following resources:
+## Making Authenticated API Calls
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Use the provided API utility for authenticated requests:
 
-## Join the community
+```typescript
+import { apiRequest, getCurrentSession } from '@/lib/api';
 
-Join our community of developers creating universal apps.
+// Get current session
+const { data, error } = await getCurrentSession();
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+// Make custom authenticated request
+const result = await apiRequest('/api/user/profile', {
+  method: 'PUT',
+  body: { name: 'New Name' }
+});
+```
+
+## Configuration
+
+### Backend Integration
+
+The mobile app connects to your Better Auth backend. Ensure:
+
+1. **Backend is running** on port 9000
+2. **IP address is configured** in `lib/config.ts` (use your machine's IP, not localhost)
+3. **Expo plugin is installed** in backend: `@better-auth/expo`
+4. **Trusted origins** include `mobile://` scheme
+5. **CORS is configured** for mobile requests from your IP
+
+### Finding Your IP Address
+
+To find your machine's IP address:
+```bash
+# On Linux/macOS
+hostname -I | awk '{print $1}'
+
+# On Windows
+ipconfig | findstr IPv4
+```
+
+Or check the Expo terminal output - it shows your IP address in the QR code URL.
+
+### Deep Linking
+
+The app uses the scheme `mobile://` for deep linking. This is configured in:
+- `app.json` - Expo configuration
+- `lib/auth-client.ts` - Better Auth client
+- Backend trusted origins
+
+## Development
+
+### Clear Cache
+
+If you encounter issues, clear the Metro cache:
+```bash
+pnpm dev --clear
+```
+
+### Update Dependencies
+
+Keep Expo SDK and related packages up to date:
+```bash
+npx expo install --fix
+```
+
+### Debugging
+
+- Press `j` in the terminal to open the debugger
+- Use React Native Debugger for advanced debugging
+- Check network requests in the debugger
+
+## Deployment
+
+### Build for Production
+
+```bash
+# Build for all platforms
+npx eas build --platform all
+
+# Build for specific platform
+npx eas build --platform ios
+npx eas build --platform android
+```
+
+### Environment Variables
+
+For production, update the `PROD_API_URL` in `lib/config.ts` to point to your production backend.
+
+### IP Address Configuration
+
+**Important**: Expo mobile apps cannot use `localhost` - they need your machine's actual IP address.
+
+1. **Find your IP**: Check the Expo terminal output or run `hostname -I`
+2. **Update config**: Modify `DEV_API_URL` in `lib/config.ts`
+3. **Update backend CORS**: Ensure your backend allows requests from your IP
+4. **Restart servers**: Restart both backend and Expo after IP changes
+
+## Learn More
+
+- [Expo Documentation](https://docs.expo.dev/)
+- [Better Auth Expo Integration](https://better-auth.com/docs/integrations/expo)
+- [React Native Documentation](https://reactnative.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
