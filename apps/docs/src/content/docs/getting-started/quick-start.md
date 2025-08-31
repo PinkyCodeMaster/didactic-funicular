@@ -21,8 +21,8 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd oakford
+git clone https://github.com/PinkyCodeMaster/didactic-funicular.git
+cd didactic-funicular
 ```
 
 ### 2. Install Dependencies
