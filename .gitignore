@@ -12,3 +12,4 @@ yarn-error.*
 .env*.local
 
 .turbo
+.env
