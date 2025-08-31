@@ -1,0 +1,21 @@
+{
+  "name": "oakford",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "check-types": "tsc --noEmit",
+    "db:auth": "pnpm dlx @better-auth/cli generate --config ./apps/backend/src/lib/auth.ts --output ./packages/db/src/schema/auth.ts -y",
+    "db:push": "pnpm --filter packages-db run db:push",
+    "db:generate": "pnpm --filter packages-db run db:generate",
+    "db:studio": "pnpm --filter packages-db run db:studio"
+  },
+  "devDependencies": {
+    "turbo": "latest",
+    "typescript": "^5.6.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
