@@ -1,9 +1,11 @@
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { betterAuth } from "better-auth";
+import { admin as adminPlugin } from "better-auth/plugins";
 import { db } from "packages-db";
 import env from "@repo/env";
 import { sendVerificationEmail, sendPasswordResetEmail, sendChangeEmailVerification } from '@/lib/resend';
+import { ac, founder, manager, admin, employee, customer } from './permissions';
 
 export const auth = betterAuth({
     database: drizzleAdapter(db, {
@@ -34,6 +36,22 @@ export const auth = betterAuth({
     },
     plugins: [
         nextCookies(),
+        adminPlugin({
+            ac,
+            roles: {
+                founder,
+                manager,
+                admin,
+                employee,
+                customer,
+            },
+            defaultRole: "customer",
+            adminRoles: ["founder", "manager", "admin"],
+            defaultBanReason: "Violation of terms of service",
+            defaultBanExpiresIn: 60 * 60 * 24 * 7, // 7 days
+            impersonationSessionDuration: 60 * 60 * 2, // 2 hours
+            bannedUserMessage: "Your account has been suspended. Please contact support if you believe this is an error.",
+        }),
     ],
     secret: env.BETTER_AUTH_SECRET,
     baseURL: env.BETTER_AUTH_URL,

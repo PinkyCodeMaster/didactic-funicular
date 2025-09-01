@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "build:docs": "pnpm --filter docs run build",
     "lint": "turbo lint",
     "test": "turbo test",
     "check-types": "tsc --noEmit",

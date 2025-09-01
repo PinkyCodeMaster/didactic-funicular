@@ -11,11 +11,10 @@ export default defineConfig({
             title: 'Oakford Documentation',
             description: 'Complete documentation for the Oakford platform - web, mobile, and admin applications with authentication and modern architecture',
             social: [
-                { icon: 'github', label: 'GitHub', href: 'https://github.com/your-org/oakford' },
-                { icon: 'discord', label: 'Discord', href: 'https://discord.gg/oakford' },
+                { icon: 'github', label: 'GitHub', href: 'https://github.com/PinkyCodeMaster/didactic-funicular' },
             ],
             editLink: {
-                baseUrl: 'https://github.com/your-org/oakford/edit/main/apps/docs/',
+                baseUrl: 'https://github.com/PinkyCodeMaster/didactic-funicular/edit/main/apps/docs/',
             },
             lastUpdated: true,
             pagination: true,
@@ -58,6 +57,7 @@ export default defineConfig({
                     label: 'Technical Reference',
                     badge: { text: 'Developers', variant: 'note' },
                     items: [
+                        { label: 'Authentication', slug: 'technical/authentication' },
                         { label: 'API Reference', slug: 'technical/api-reference' },
                         { label: 'Development Guide', slug: 'technical/development' },
                     ],

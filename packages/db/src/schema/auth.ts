@@ -14,6 +14,18 @@ export const user = pgTable("user", {
   updatedAt: timestamp("updated_at")
     .$defaultFn(() => /* @__PURE__ */ new Date())
     .notNull(),
+  // Admin plugin fields
+  role: text("role").$defaultFn(() => "customer"),
+  banned: boolean("banned").$defaultFn(() => false),
+  banReason: text("ban_reason"),
+  banExpires: timestamp("ban_expires"),
+  // Department and organizational fields
+  department: text("department").$defaultFn(() => "general"),
+  jobTitle: text("job_title"),
+  employeeId: text("employee_id"),
+  managerId: text("manager_id"),
+  hireDate: timestamp("hire_date"),
+  isActive: boolean("is_active").$defaultFn(() => true),
 });
 
 export const session = pgTable("session", {
@@ -27,6 +39,8 @@ export const session = pgTable("session", {
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
+  // Admin plugin field for impersonation
+  impersonatedBy: text("impersonated_by"),
 });
 
 export const account = pgTable("account", {
