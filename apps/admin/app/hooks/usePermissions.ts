@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { authClient } from '../lib/auth-client';
-import { hasHigherOrEqualRole } from '../../../backend/src/lib/permissions';
+import { hasHigherOrEqualRole } from '@repo/permissions';
 
 interface User {
   id: string;

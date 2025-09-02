@@ -1,90 +1,134 @@
 ---
-title: Introduction
-description: Learn about the Oakford platform architecture and features.
+title: Welcome to Oakford Technology
+description: Introduction to Oakford Technology's comprehensive service offerings and documentation system.
 ---
 
-# Introduction to Oakford
+# Welcome to Oakford Technology
 
-Oakford is a modern, full-stack platform built as a monorepo containing multiple applications and shared packages. It provides a complete solution for building web, mobile, and admin applications with shared authentication, database, and UI components.
+Welcome to the comprehensive documentation portal for Oakford Technology, your trusted technology partner based in Devizes, Wiltshire, UK. This documentation system serves as your complete guide to all our services, applications, and support resources.
 
-## Key Features
+## About This Documentation
 
-### 🔐 Authentication System
-- **Better Auth Integration**: Secure authentication with email/password, social logins, and session management
-- **Multi-app Support**: Shared authentication across web, mobile, and admin applications
-- **Role-based Access**: Admin and user roles with proper authorization
+This documentation portal is designed to serve multiple audiences:
 
-### 🏗️ Monorepo Architecture
-- **Shared Packages**: Centralized environment configuration, database layer, and UI components
-- **Type Safety**: Full TypeScript support across all applications and packages
-- **Development Experience**: Hot reload, shared tooling, and consistent development workflow
+- **Internal Staff** - Complete operational procedures and technical documentation
+- **External Clients** - Service information and user guides
+- **Partners & Integrators** - Technical specifications and API documentation
+- **Educational Institutions** - Specialized resources for our school network services
 
-### 🌐 Multi-Platform Support
-- **Web Application**: Next.js 15 with App Router and server-side rendering
-- **Mobile Application**: Expo React Native for iOS and Android
-- **Admin Panel**: React Router 7 with modern routing and data loading
-- **Backend API**: Hono.js with high performance and edge runtime support
+## Quick Navigation
 
-### 🎨 Modern UI/UX
-- **Design System**: shadcn/ui components with Tailwind CSS
-- **Responsive Design**: Mobile-first approach across all applications
-- **Dark Mode**: Built-in theme switching support
-- **Accessibility**: WCAG compliant components and interactions
+### For New Users
+If you're new to Oakford Technology, start with:
+1. [Company Overview](/getting-started/company-overview/) - Learn about our services and departments
+2. [Service Architecture](/getting-started/architecture/) - Understand how our services work together
+3. [Navigation Guide](/getting-started/navigation/) - Learn how to use this documentation effectively
 
-## Technology Stack
+### For Existing Clients
+Find what you need quickly:
+- **Service-Specific Documentation** - Use the department filters or sidebar navigation
+- **Emergency Support** - [Emergency Contacts](/internal/emergency/) for critical issues
+- **Staff Directory** - [Contact Information](/internal/staff-directory/) for all departments
+- **Technical Resources** - API documentation and technical guides
 
-### Frontend Technologies
-- **Next.js 15**: React framework with App Router and server components
-- **React Router 7**: Modern routing with data loading and actions
-- **Expo**: React Native framework for mobile development
-- **TypeScript**: Full type safety and developer experience
+### For Internal Staff
+Access internal resources:
+- **Policies & Procedures** - [Internal Documentation](/internal/policies/)
+- **Training Materials** - [Staff Training Resources](/internal/training/)
+- **Emergency Procedures** - [Emergency Response Protocols](/internal/emergency/)
 
-### Backend Technologies
-- **Hono.js**: Fast, lightweight web framework
-- **Better Auth**: Modern authentication library
-- **Drizzle ORM**: Type-safe database queries and migrations
-- **PostgreSQL**: Robust relational database
+## Our Services at a Glance
 
-### Development Tools
-- **pnpm**: Fast, efficient package manager with workspace support
-- **Tailwind CSS**: Utility-first CSS framework
-- **Vite**: Fast build tool and development server
-- **ESLint & Prettier**: Code quality and formatting
+### Financial Technology
+**AISP Services** - Regulated Account Information Service Provider solutions with full PSD2 compliance and secure API access for financial institutions.
 
-## Project Structure
+### Environmental Services
+**Recycling Services** - Comprehensive waste management and recycling solutions with advanced processing and detailed environmental reporting.
 
-```
-oakford/
-├── apps/
-│   ├── web/          # Next.js customer application
-│   ├── admin/        # React Router admin panel
-│   ├── backend/      # Hono.js API server
-│   ├── mobile/       # Expo React Native app
-│   └── docs/         # Starlight documentation site
-├── packages/
-│   ├── env/          # Environment configuration with Zod validation
-│   ├── db/           # Drizzle ORM database layer
-│   └── ui/           # Shared React UI components
-├── package.json      # Workspace configuration
-└── pnpm-workspace.yaml
-```
+### Educational Technology
+**School Network Services** - Specialized network infrastructure and management for educational institutions with content filtering and security.
 
-## Development Philosophy
+### Enterprise Support
+**IT Support Services** - Professional IT support including help desk, remote assistance, and comprehensive maintenance contracts.
 
-### Type Safety First
-Every part of the system is built with TypeScript, ensuring compile-time error detection and excellent developer experience with autocomplete and refactoring support.
+### Infrastructure Services
+**Data Centre Operations** - Enterprise-grade hosting, colocation, and backup services with 24/7 monitoring from our Devizes facility.
 
-### Shared by Default
-Common functionality like authentication, database access, and UI components are shared across applications to reduce duplication and ensure consistency.
+### Software Solutions
+**Platform Applications** - Modern web and mobile applications with admin panels for managing operations across all service areas.
 
-### Modern Standards
-The platform uses the latest stable versions of frameworks and follows current best practices for security, performance, and maintainability.
+## Documentation Features
 
-### Developer Experience
-Fast development cycles with hot reload, comprehensive error messages, and integrated tooling make development productive and enjoyable.
+### Enhanced Search
+- **Full-text search** across all documentation
+- **Department filters** to narrow results by service area
+- **Context-aware suggestions** for related content
 
-## Next Steps
+### Responsive Design
+- **Mobile-friendly** interface for access on any device
+- **Print-optimized** pages for offline reference
+- **Accessibility compliant** design for all users
 
-- [Quick Start Guide](/getting-started/quick-start/) - Get the platform running locally
-- [Architecture Overview](/getting-started/architecture/) - Understand the system design
-- [Development Setup](/internal/development-setup/) - Detailed development environment setup
+### Real-time Updates
+- **Live documentation** that stays current with our services
+- **Version tracking** for technical documentation
+- **Change notifications** for important updates
+
+## Getting Help
+
+### Documentation Support
+If you need help using this documentation:
+- Use the search function to find specific topics
+- Browse by department using the sidebar navigation
+- Check the [Navigation Guide](/getting-started/navigation/) for tips
+
+### Technical Support
+For technical issues or service support:
+- **Emergency Issues** - Use [Emergency Contacts](/internal/emergency/)
+- **General Support** - Contact the appropriate department via [Staff Directory](/internal/staff-directory/)
+- **Account Issues** - Contact your account manager or main reception
+
+### Feedback & Improvements
+Help us improve this documentation:
+- Report errors or outdated information to the relevant department
+- Suggest improvements or additional content
+- Request new documentation sections as needed
+
+## What's New
+
+### Recent Updates
+- Enhanced department-specific navigation
+- Improved search functionality with filters
+- Mobile-responsive design improvements
+- Updated emergency contact procedures
+
+### Coming Soon
+- Interactive service diagrams
+- Video tutorials for common procedures
+- Multi-language support for international clients
+- Enhanced API documentation with live examples
+
+## Compliance & Security
+
+This documentation system maintains:
+- **Data Protection** compliance with GDPR requirements
+- **Access Controls** for sensitive internal information
+- **Audit Trails** for documentation access and changes
+- **Regular Reviews** to ensure accuracy and relevance
+
+## Contact Information
+
+### General Inquiries
+📞 **+44 (0) 1380 XXX XXX**  
+📧 **info@oakford.tech**  
+🏢 **Oakford Technology, Devizes, Wiltshire, UK**
+
+### Documentation Team
+📧 **docs@oakford.tech**  
+For questions about this documentation system or to report issues.
+
+---
+
+Ready to explore our services? Start with the [Company Overview](/getting-started/company-overview/) or jump directly to your area of interest using the navigation menu.
+
+*This documentation is continuously updated to reflect the latest information about Oakford Technology's services and procedures.*

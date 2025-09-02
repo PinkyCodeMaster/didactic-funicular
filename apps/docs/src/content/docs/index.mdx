@@ -1,140 +1,164 @@
 ---
-title: Welcome to Oakford
-description: Complete platform solution with web, mobile, and admin applications built for modern businesses.
+title: Oakford Technology Documentation
+description: Comprehensive documentation for all Oakford Technology services and applications based in Devizes, UK.
 template: splash
 hero:
-  title: 'Oakford Platform'
-  tagline: A comprehensive monorepo solution with web, mobile, and admin applications built for modern businesses
+  title: 'Oakford Technology'
+  tagline: Your complete guide to Oakford Technology services - AISP, Recycling, School Networks, IT Support, Data Centre operations and more.
   image:
     file: ../../assets/houston.webp
-    alt: 'Oakford Platform Logo'
+    alt: 'Oakford Technology Logo'
   actions:
     - text: Get Started
       link: /getting-started/introduction/
       icon: right-arrow
       variant: primary
-    - text: View Architecture
-      link: /getting-started/architecture/
-      icon: document
+    - text: View All Services
+      link: /getting-started/company-overview/
+      icon: open-book
       variant: secondary
-    - text: API Reference
-      link: /technical/api-reference/
-      icon: external
+    - text: Emergency Contacts
+      link: /internal/emergency/
+      icon: warning
       variant: minimal
 ---
 
 import { Card, CardGrid, LinkCard, Badge, Icon } from '@astrojs/starlight/components';
 
-## Platform Overview
+## Oakford Technology Services
+
+<div class="department-grid">
+  <div class="department-card" style="--department-color: var(--oakford-success)">
+    <h3>AISP Services</h3>
+    <p>Account Information Service Provider solutions for financial institutions, offering secure API access to account data with full regulatory compliance.</p>
+    <div class="card-actions">
+      <a href="/aisp/overview/" class="btn btn-primary">Learn More</a>
+      <a href="/aisp/api-integration/" class="btn btn-secondary">API Docs</a>
+    </div>
+  </div>
+
+  <div class="department-card" style="--department-color: var(--oakford-info)">
+    <h3>Recycling Services</h3>
+    <p>Comprehensive waste management and recycling solutions with advanced sorting, processing, and environmental reporting capabilities.</p>
+    <div class="card-actions">
+      <a href="/recycling/overview/" class="btn btn-primary">Learn More</a>
+      <a href="/recycling/reporting/" class="btn btn-secondary">Reports</a>
+    </div>
+  </div>
+
+  <div class="department-card" style="--department-color: var(--oakford-warning)">
+    <h3>School Network Services</h3>
+    <p>Specialized network infrastructure and management for educational institutions, including security filtering and maintenance support.</p>
+    <div class="card-actions">
+      <a href="/school-networks/overview/" class="btn btn-primary">Learn More</a>
+      <a href="/school-networks/security/" class="btn btn-secondary">Security</a>
+    </div>
+  </div>
+
+  <div class="department-card" style="--department-color: var(--sl-color-gray-6)">
+    <h3>IT Support Services</h3>
+    <p>Professional IT support including help desk, remote assistance, on-site services, and comprehensive maintenance contracts.</p>
+    <div class="card-actions">
+      <a href="/it-support/overview/" class="btn btn-primary">Learn More</a>
+      <a href="/it-support/helpdesk/" class="btn btn-secondary">Help Desk</a>
+    </div>
+  </div>
+
+  <div class="department-card" style="--department-color: var(--oakford-danger)">
+    <h3>Data Centre Operations</h3>
+    <p>Enterprise-grade hosting, colocation, backup and recovery services with 24/7 monitoring and support from our Devizes facility.</p>
+    <div class="card-actions">
+      <a href="/data-centre/overview/" class="btn btn-primary">Learn More</a>
+      <a href="/data-centre/monitoring/" class="btn btn-secondary">Monitoring</a>
+    </div>
+  </div>
+
+  <div class="department-card" style="--department-color: var(--oakford-primary)">
+    <h3>Platform Applications</h3>
+    <p>Modern web and mobile applications with comprehensive admin panels and backend services for managing all Oakford Technology operations.</p>
+    <div class="card-actions">
+      <a href="/applications/web-app/" class="btn btn-primary">Learn More</a>
+      <a href="/technical/api-reference/" class="btn btn-secondary">API Docs</a>
+    </div>
+  </div>
+</div>
+
+## Quick Access
 
 <CardGrid stagger>
-	<Card title="Web Application" icon="laptop">
-		**Next.js 15** customer-facing application with authentication, responsive design, and modern UI components.
-		
-		- Server-side rendering
-		- Authentication pages
-		- Responsive design
-		- Better Auth integration
-	</Card>
-	<Card title="Admin Panel" icon="setting">
-		**React Router 7** admin interface for managing users, content, and system settings.
-		
-		- Modern routing
-		- shadcn/ui components
-		- Dashboard interface
-		- Role-based access
-	</Card>
-	<Card title="Mobile App" icon="mobile">
-		**Expo React Native** application for iOS and Android platforms.
-		
-		- Cross-platform support
-		- Native performance
-		- Shared authentication
-		- Offline capabilities
-	</Card>
-	<Card title="Backend API" icon="rocket">
-		**Hono.js** API server with Better Auth integration and PostgreSQL database.
-		
-		- High performance
-		- Type-safe endpoints
-		- Database integration
-		- CORS configuration
-	</Card>
+  <Card title="Emergency Contacts" icon="warning">
+    Access emergency contact information and escalation procedures for critical issues across all departments.
+    
+    **Available 24/7 for critical systems**
+  </Card>
+  <Card title="Staff Directory" icon="contact">
+    Find contact information for all departments and team members across Oakford Technology's Devizes operations.
+    
+    **Complete organizational directory**
+  </Card>
+  <Card title="API Documentation" icon="laptop">
+    Complete technical documentation for developers integrating with Oakford Technology services and applications.
+    
+    **RESTful APIs with full examples**
+  </Card>
+  <Card title="Training Materials" icon="graduation-cap">
+    Access training resources and documentation for staff, clients, and educational institutions.
+    
+    **Comprehensive learning resources**
+  </Card>
 </CardGrid>
 
-## Quick Start
-
-Get the entire platform running locally in minutes:
-
-```bash
-# Clone and install
-git clone <repository-url>
-cd oakford
-pnpm install
-
-# Set up environment
-cp .env.example .env
-# Edit .env with your configuration
-
-# Build packages and start
-pnpm build:packages
-pnpm dev
-```
-
-This starts all applications:
-- **Web App**: http://localhost:3000
-- **Admin Panel**: http://localhost:5173
-- **Backend API**: http://localhost:9000
-
-## Technology Stack
+## Service Categories
 
 <CardGrid>
-	<Card title="Frontend Technologies" icon="puzzle">
-		- **Next.js 15** - React framework with App Router
-		- **React Router 7** - Modern client-side routing
-		- **Expo** - React Native for mobile
-		- **Tailwind CSS** - Utility-first styling
-		- **shadcn/ui** - Component library
-	</Card>
-	<Card title="Backend Technologies" icon="server">
-		- **Hono.js** - Fast web framework
-		- **Better Auth** - Modern authentication
-		- **Drizzle ORM** - Type-safe database queries
-		- **PostgreSQL** - Robust database
-		- **TypeScript** - End-to-end type safety
-	</Card>
+  <LinkCard
+    title="Financial Services (AISP)"
+    description="Regulated financial technology solutions and API services"
+    href="/aisp/overview/"
+  />
+  <LinkCard
+    title="Environmental Services"
+    description="Recycling and waste management solutions"
+    href="/recycling/overview/"
+  />
+  <LinkCard
+    title="Educational Technology"
+    description="School network infrastructure and support"
+    href="/school-networks/overview/"
+  />
+  <LinkCard
+    title="Enterprise IT Support"
+    description="Professional IT services and maintenance"
+    href="/it-support/overview/"
+  />
+  <LinkCard
+    title="Data Centre Services"
+    description="Hosting, colocation, and infrastructure services"
+    href="/data-centre/overview/"
+  />
+  <LinkCard
+    title="Application Platform"
+    description="Web, mobile, and admin application suite"
+    href="/applications/web-app/"
+  />
 </CardGrid>
 
-## Documentation Sections
+## About Oakford Technology
 
-<CardGrid>
-	<LinkCard
-		title="User Guide"
-		description="Learn how to use the web and mobile applications"
-		href="/user-guide/web-app/"
-	/>
-	<LinkCard
-		title="Admin Guide"
-		description="Comprehensive admin panel documentation"
-		href="/admin-guide/admin-panel/"
-	/>
-	<LinkCard
-		title="API Reference"
-		description="Complete API documentation with examples"
-		href="/technical/api-reference/"
-	/>
-	<LinkCard
-		title="Development Guide"
-		description="Technical documentation for developers"
-		href="/technical/development/"
-	/>
-</CardGrid>
+Based in Devizes, UK, Oakford Technology provides comprehensive technology solutions across multiple sectors. Our services span from financial technology (AISP) and environmental services (recycling) to educational support (school networks) and enterprise infrastructure (data centre operations).
 
 ## Key Features
 
-- <Icon name="approve-check" color="green" /> **Full-stack TypeScript** - End-to-end type safety
-- <Icon name="rocket" color="blue" /> **Modern Architecture** - Monorepo with shared packages
-- <Icon name="shield" color="orange" /> **Secure Authentication** - Better Auth integration
-- <Icon name="mobile" color="purple" /> **Multi-platform** - Web, mobile, and admin apps
-- <Icon name="setting" color="gray" /> **Developer Experience** - Hot reload and modern tooling
-- <Icon name="document" color="green" /> **Comprehensive Docs** - Complete documentation coverage
+- <Icon name="approve-check" color="green" /> **Multi-Departmental Services** - Comprehensive technology solutions
+- <Icon name="shield" color="orange" /> **Security-First Approach** - Regulatory compliance across all services
+- <Icon name="world" color="blue" /> **Environmental Responsibility** - Sustainable recycling solutions
+- <Icon name="graduation-cap" color="purple" /> **Educational Sector Expertise** - Specialized school network services
+- <Icon name="server" color="gray" /> **Enterprise Infrastructure** - Professional data centre operations
+- <Icon name="rocket" color="green" /> **Modern Applications** - Web, mobile, and admin platforms
+
+## Location & Contact
+
+**Oakford Technology**  
+Devizes, Wiltshire, UK
+
+For department-specific contacts and emergency procedures, please refer to our [Staff Directory](/internal/staff-directory/) and [Emergency Contacts](/internal/emergency/) sections.

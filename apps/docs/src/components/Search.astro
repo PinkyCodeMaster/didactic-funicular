@@ -1,0 +1,143 @@
+---
+// Enhanced search component for Oakford Technology Documentation
+---
+
+<div class="search-container">
+  <input 
+    type="search" 
+    class="search-input" 
+    placeholder="Search Oakford Technology documentation..." 
+    id="doc-search"
+    autocomplete="off"
+  />
+  <div class="search-results" id="search-results"></div>
+</div>
+
+<div class="department-filters">
+  <button class="filter-button active" data-filter="all">All Departments</button>
+  <button class="filter-button" data-filter="aisp">AISP Services</button>
+  <button class="filter-button" data-filter="recycling">Recycling</button>
+  <button class="filter-button" data-filter="school-networks">School Networks</button>
+  <button class="filter-button" data-filter="it-support">IT Support</button>
+  <button class="filter-button" data-filter="data-centre">Data Centre</button>
+  <button class="filter-button" data-filter="applications">Applications</button>
+  <button class="filter-button" data-filter="technical">Technical</button>
+</div>
+
+<script>
+  // Enhanced search functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('doc-search');
+    const searchResults = document.getElementById('search-results');
+    const filterButtons = document.querySelectorAll('.filter-button');
+    
+    let currentFilter = 'all';
+    
+    // Department filter functionality
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        currentFilter = this.dataset.filter;
+        
+        // Filter sidebar items
+        filterSidebarItems(currentFilter);
+      });
+    });
+    
+    function filterSidebarItems(filter) {
+      const sidebarItems = document.querySelectorAll('.sidebar-content .top-level > li');
+      
+      sidebarItems.forEach(item => {
+        const summary = item.querySelector('summary');
+        if (!summary) return;
+        
+        const text = summary.textContent.toLowerCase();
+        let shouldShow = filter === 'all';
+        
+        if (!shouldShow) {
+          switch(filter) {
+            case 'aisp':
+              shouldShow = text.includes('aisp');
+              break;
+            case 'recycling':
+              shouldShow = text.includes('recycling');
+              break;
+            case 'school-networks':
+              shouldShow = text.includes('school') || text.includes('network');
+              break;
+            case 'it-support':
+              shouldShow = text.includes('support') || text.includes('it');
+              break;
+            case 'data-centre':
+              shouldShow = text.includes('data') || text.includes('centre');
+              break;
+            case 'applications':
+              shouldShow = text.includes('platform') || text.includes('application');
+              break;
+            case 'technical':
+              shouldShow = text.includes('technical') || text.includes('developer');
+              break;
+          }
+        }
+        
+        item.style.display = shouldShow ? 'block' : 'none';
+      });
+    }
+    
+    // Search functionality (integrates with Starlight's built-in search)
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase();
+        
+        if (query.length < 2) {
+          searchResults.innerHTML = '';
+          return;
+        }
+        
+        // This would integrate with Starlight's search or Pagefind
+        // For now, we'll show a simple message
+        searchResults.innerHTML = `
+          <div class="search-message">
+            <p>Searching for: "${query}"</p>
+            <p><small>Enhanced search results will appear here</small></p>
+          </div>
+        `;
+      });
+    }
+  });
+</script>
+
+<style>
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--sl-color-white);
+    border: 2px solid var(--sl-color-gray-3);
+    border-top: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+  }
+  
+  .search-results:not(:empty) {
+    display: block;
+  }
+  
+  .search-message {
+    padding: 1rem;
+    color: var(--sl-color-gray-6);
+  }
+  
+  :root[data-theme='dark'] .search-results {
+    background: var(--sl-color-gray-1);
+    border-color: var(--sl-color-gray-4);
+  }
+</style>

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { authClient } from './auth-client';
+import * as SecureStore from 'expo-secure-store';
 
 interface AuthContextType {
     isAuthenticated: boolean;
@@ -14,8 +15,26 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const { data: session, isPending, refetch } = authClient.useSession();
+    const { data: session, isPending, refetch, error } = authClient.useSession();
     const [isLoading, setIsLoading] = useState(true);
+    const [hasTimedOut, setHasTimedOut] = useState(false);
+    const [localSession, setLocalSession] = useState<any>(null);
+
+    // Check for local session on mount
+    useEffect(() => {
+        const checkLocalSession = async () => {
+            try {
+                const storedSession = await SecureStore.getItemAsync('mobile-auth-session');
+                if (storedSession) {
+                    setLocalSession(JSON.parse(storedSession));
+                }
+            } catch (error) {
+                console.log('No local session found');
+            }
+        };
+
+        checkLocalSession();
+    }, []);
 
     useEffect(() => {
         // Set loading to false once we have session data (or confirmed no session)
@@ -23,6 +42,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setIsLoading(false);
         }
     }, [isPending]);
+
+    useEffect(() => {
+        // Add a timeout to prevent infinite loading
+        const timeout = setTimeout(() => {
+            console.warn('Session check timed out, falling back to local session or no auth');
+            setHasTimedOut(true);
+            setIsLoading(false);
+        }, 1500); // 1.5 second timeout
+
+        return () => clearTimeout(timeout);
+    }, []);
 
     const signOut = async () => {
         try {
@@ -56,10 +86,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
+    // Use remote session if available, otherwise fall back to local session
+    const currentSession = session || (hasTimedOut ? localSession : null);
+    const isAuthenticated = !!currentSession?.user;
+
     const value = {
-        isAuthenticated: !!session?.user,
-        isLoading: isLoading || isPending,
-        user: session?.user,
+        isAuthenticated,
+        isLoading: (isLoading || isPending) && !hasTimedOut,
+        user: currentSession?.user,
         signOut,
         getSession,
         refreshSession,
@@ -69,9 +103,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Debug logging
     console.log('Auth Context Debug:', {
         session: session,
-        isAuthenticated: !!session?.user,
-        isLoading: isLoading || isPending,
-        isPending
+        localSession: localSession,
+        currentSession: currentSession,
+        isAuthenticated,
+        isLoading: (isLoading || isPending) && !hasTimedOut,
+        isPending,
+        hasTimedOut,
+        error: error?.message || null
     });
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

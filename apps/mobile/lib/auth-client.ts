@@ -3,7 +3,7 @@ import { expoClient } from "@better-auth/expo/client";
 import { adminClient } from "better-auth/client/plugins";
 import * as SecureStore from "expo-secure-store";
 import { config } from "./config";
-import { ac, founder, manager, admin, employee, customer } from "../../backend/src/lib/permissions";
+import { ac, founder, manager, admin, employee, customer } from "@repo/permissions";
 
 export const authClient = createAuthClient({
   baseURL: config.apiBaseUrl, // Your backend URL - uses IP address for Expo
@@ -14,7 +14,7 @@ export const authClient = createAuthClient({
       storage: SecureStore,
     }),
     adminClient({
-      ac,
+      ac: ac as any,
       roles: {
         founder,
         manager,
